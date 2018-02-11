@@ -6,7 +6,10 @@ The Mobile Flashcards Application allows users to study collections of flashcard
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-### Prerequisites
+### Requirements
+
+**Supported Platforms:**
+The Mobile Flashcards supported iOS and android platforms and specified tested on iPhone 6 Plus and Samsung Note 8
 
 **Software Dependencies:**
 
@@ -27,6 +30,12 @@ yarn install or npm install
 
 ```
 yarn start or npm start
+```
+
+#### Test the application
+
+```
+yarn test
 ```
 
 ## Built With
