@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     padding: 15
   }
 });
-function mapStateToProps(decks) {
-  return { decks };
-}
+const mapStateToProps = decks => ({ decks });
+
 export default connect(mapStateToProps, null)(DeckDetails);

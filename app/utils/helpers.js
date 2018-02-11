@@ -9,22 +9,19 @@ export function clearLocalNotification() {
     Notifications.cancelAllScheduledNotificationsAsync
   );
 }
-
-function createNotification() {
-  return {
-    title: "Take Your Quiz!",
-    body: "👋 don't forget to take your quiz for today!",
-    ios: {
-      sound: true
-    },
-    android: {
-      sound: true,
-      priority: "high",
-      sticky: false,
-      vibrate: true
-    }
-  };
-}
+const createNotification = () => ({
+  title: "Take Your Quiz!",
+  body: "👋 don't forget to take your quiz for today!",
+  ios: {
+    sound: true
+  },
+  android: {
+    sound: true,
+    priority: "high",
+    sticky: false,
+    vibrate: true
+  }
+});
 
 export function setLocalNotification() {
   AsyncStorage.getItem(NOTIFICATION_KEY)

@@ -29,7 +29,6 @@ class Decks extends Component {
   }
 }
 
-function mapStateToProps(decks) {
-  return { decks };
-}
+const mapStateToProps = decks => ({ decks });
+
 export default connect(mapStateToProps, { getAllDecks })(Decks);

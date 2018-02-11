@@ -12,6 +12,9 @@ export default class FlipCard extends Component {
   state = {
     buttonText: this.props.frontButtonText || ""
   };
+  componentWillUnmount() {
+    this.animatedValue.removeAllListeners();
+  }
   componentWillMount() {
     // console.log("componentWillMount");
     this.animatedValue = new Animated.Value(0);

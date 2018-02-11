@@ -5,28 +5,45 @@ import { TextButton } from "../components/textbutton";
 import { gray, purple } from "../utils/colors";
 import { addDeck } from "../actions";
 import { AppView } from "../components/appview";
+import { NavigationActions } from "react-navigation";
 
 class AddDeck extends Component {
   state = {
     title: ""
   };
   onSubmit = () => {
-    if (this.state.title === "") {
+    const deckTitle = this.state.title;
+    this.deckTitle = deckTitle;
+    if (deckTitle === "") {
       Alert.alert(
         "Sorry",
         "Please Enter Valid Deck Title",
         [{ text: "OK", onPress: () => console.log("OK Pressed") }],
         { cancelable: false }
       );
-
       return;
     }
 
     const { addDeck, navigation } = this.props;
-    addDeck(this.state.title);
+    addDeck(deckTitle).then(() => {
+      console.log(deckTitle);
+      console.log(this.props.navigation);
+      this.props.navigation.dispatch(
+        NavigationActions.reset({
+          index: 1,
+          actions: [
+            NavigationActions.navigate({ routeName: "Home" }),
+            NavigationActions.navigate({
+              routeName: "DeckDetails",
+              params: { title: deckTitle }
+            })
+          ]
+        })
+      );
+    });
     this.setState({ title: "" });
-    navigation.goBack();
   };
+
   render() {
     return (
       <AppView>
