@@ -32,7 +32,9 @@ class DeckDetails extends Component {
       <AppView>
         <PureDeckCard deck={deck} size={2} />
         <TextButton onPress={this.onAddCardClick}>Add Card</TextButton>
-        <TextButton onPress={this.onQuizClick}>Start Quiz</TextButton>
+        {deck.questions.length > 0 && (
+          <TextButton onPress={this.onQuizClick}>Start Quiz</TextButton>
+        )}
       </AppView>
     );
   }

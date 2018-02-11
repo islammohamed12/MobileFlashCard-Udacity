@@ -3,7 +3,12 @@ import { View, Text, StyleSheet } from "react-native";
 import { white } from "../utils/colors";
 import { TextButton } from "../components/textbutton";
 
-function ResultView({ correctAnswers, questionCount, onRestartClick }) {
+function ResultView({
+  correctAnswers,
+  questionCount,
+  onRestartClick,
+  onBackToDeckClick
+}) {
   return (
     <View
       style={[
@@ -24,9 +29,8 @@ function ResultView({ correctAnswers, questionCount, onRestartClick }) {
       <Text style={styles.correctAnswersText}>
         Score : {correctAnswers * 100 / questionCount} %
       </Text>
-      <TextButton style={styles.restartButton} onPress={onRestartClick}>
-        Restart Quiz
-      </TextButton>
+      <TextButton onPress={onRestartClick}>Restart Quiz</TextButton>
+      <TextButton onPress={onBackToDeckClick}>Back To Deck</TextButton>
     </View>
   );
 }
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold"
   },
-  restartButton: {},
+
   correctAnswersText: {
     fontSize: 20,
     fontWeight: "bold",

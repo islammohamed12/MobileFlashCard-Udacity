@@ -52,6 +52,10 @@ class Quiz extends Component {
       showResult: false
     });
   };
+  onBackToDeckClick = () => {
+    const { navigation } = this.props;
+    navigation.goBack();
+  };
   render() {
     const { navigation } = this.props;
     const deck = navigation.state.params.deck;
@@ -86,6 +90,7 @@ class Quiz extends Component {
             correctAnswers={this.state.correctAnswers}
             questionCount={deck.questions.length}
             onRestartClick={this.onRestartClick}
+            onBackToDeckClick={this.onBackToDeckClick}
           />
         )}
       </View>
