@@ -7,10 +7,14 @@ const DECKS_STORAGE_KEY = "FlashCards:decks";
 // saveDeckTitle: take in a single title argument and add it to the decks.
 // addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
 export function getDecks() {
-  // AsyncStorage.setItem(DECKS_STORAGE_KEY, "");
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(
-    results => (results ? JSON.parse(results) : defaultDecks)
-  );
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY).then(results => {
+    if (results) {
+      return JSON.parse(results);
+    } else {
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(defaultDecks));
+      return defaultDecks;
+    }
+  });
 }
 
 export function getDeck(id) {
@@ -29,15 +33,16 @@ export function saveDeckTitle(title) {
   });
 }
 
-export function addCardToDeck(title, { question, answer }) {
+export function addCardToDeck(title, card) {
   return getDecks().then(decks => {
     if (decks[title] && decks[title]["questions"]) {
-      decks[title]["questions"].push({ question, answer });
+      decks[title]["questions"].push(card);
     }
     AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
+    return decks;
   });
 }
 
-// export function reset() {
-//   AsyncStorage.setItem(DECKS_STORAGE_KEY, "");
-// }
+export function reset() {
+  AsyncStorage.setItem(DECKS_STORAGE_KEY, "");
+}

@@ -9,10 +9,16 @@ export function receiveDecks(decks) {
     decks
   };
 }
+export const receiveCard = (deckTitle, card) => dispatch => {
+  dispatch({
+    type: ADD_CARD,
+    deckTitle,
+    card
+  });
+};
 
 export const addDeck = title => dispatch => {
   return saveDeckTitle(title).then(() => {
-    // debugger;
     dispatch({
       type: ADD_DECK,
       title
@@ -22,18 +28,11 @@ export const addDeck = title => dispatch => {
 
 export const addCard = (deckTitle, card) => dispatch => {
   return addCardToDeck(deckTitle, card).then(() => {
-    // debugger;
-    dispatch({
-      type: ADD_CARD,
-      deckTitle,
-      card
-    });
+    dispatch(receiveCard(deckTitle, card));
   });
 };
-
 export const getAllDecks = () => dispatch => {
   return getDecks().then(decks => {
-    console.log(decks);
     dispatch(receiveDecks(decks));
   });
 };

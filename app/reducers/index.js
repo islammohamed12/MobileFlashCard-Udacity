@@ -16,7 +16,6 @@ function decks(state = {}, action) {
         }
       };
     case ADD_CARD: {
-      debugger;
       const out = {
         ...state
       };
@@ -25,10 +24,8 @@ function decks(state = {}, action) {
         out[action.deckTitle].questions.push({ question, answer });
       }
       return out;
-      break;
     }
     default:
-      console.log(state);
       return state;
   }
 }

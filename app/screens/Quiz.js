@@ -13,16 +13,18 @@ class Quiz extends Component {
     questionId: 0,
     showResult: false
   };
-  ComponentDidMount() {
+  componentDidMount() {
     clearLocalNotification().then(setLocalNotification);
   }
   onCorrectClick = () => {
     const { navigation } = this.props;
     const deck = navigation.state.params.deck;
     const nextQuestionId = this.state.questionId + 1;
-    this.setState({
-      questionId: nextQuestionId,
-      correctAnswers: this.state.correctAnswers + 1
+    this.setState(prevState => {
+      return {
+        questionId: nextQuestionId,
+        correctAnswers: prevState.correctAnswers + 1
+      };
     });
 
     if (nextQuestionId === deck.questions.length) {

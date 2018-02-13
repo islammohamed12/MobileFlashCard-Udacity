@@ -4,7 +4,6 @@ import AddDeck from "../screens/AddDeck";
 import DeckDetails from "../screens/DeckDetails";
 import AddCard from "../screens/AddCard";
 import Quiz from "../screens/Quiz";
-
 import { TabNavigator, StackNavigator } from "react-navigation";
 import { Platform } from "react-native";
 import { purple, white } from "../utils/colors";
