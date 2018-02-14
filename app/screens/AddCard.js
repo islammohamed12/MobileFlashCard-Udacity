@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, TextInput, Alert } from "react-native";
+import { Text, StyleSheet, TextInput, Alert, Keyboard } from "react-native";
+
 import { connect } from "react-redux";
 import { gray, purple } from "../utils/colors";
 import { TextButton } from "../components/textbutton";
@@ -31,11 +32,12 @@ class AddCard extends Component {
       question: "",
       answer: ""
     });
+    Keyboard.dismiss();
     navigation.goBack();
   };
   render() {
     return (
-      <AppView>
+      <AppView isFormView={true}>
         <TextInput
           style={styles.deckInput}
           autoFocus={true}

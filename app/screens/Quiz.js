@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { white, red, green } from "../utils/colors";
 import FlipCard from "../components/flipcard";
@@ -7,6 +7,8 @@ import QuestionCard from "./QuestionCard";
 import ResultView from "./ResultView";
 import { TextButton } from "../components/textbutton";
 import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
+import { AppView } from "../components/appview";
+
 class Quiz extends Component {
   state = {
     correctAnswers: 0,
@@ -65,9 +67,9 @@ class Quiz extends Component {
     const questionNumber = questionId + 1;
     // console.log("Deck", deck);
     return (
-      <View style={styles.container}>
+      <AppView>
         {!this.state.showResult && (
-          <View style={styles.container}>
+          <AppView>
             <Text>{`${questionNumber} / ${deck.questions.length}`}</Text>
             <QuestionCard
               questionId={this.state.questionId}
@@ -85,7 +87,7 @@ class Quiz extends Component {
             >
               Incorrect
             </TextButton>
-          </View>
+          </AppView>
         )}
         {this.state.showResult && (
           <ResultView
@@ -95,17 +97,9 @@ class Quiz extends Component {
             onBackToDeckClick={this.onBackToDeckClick}
           />
         )}
-      </View>
+      </AppView>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: white,
-    padding: 15,
-    flex: 1
-  }
-});
 
 export default Quiz;

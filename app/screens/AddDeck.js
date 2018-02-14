@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, TextInput, Alert } from "react-native";
+import { Text, StyleSheet, TextInput, Alert, Keyboard } from "react-native";
 import { connect } from "react-redux";
 import { TextButton } from "../components/textbutton";
 import { gray, purple } from "../utils/colors";
+import { headFontSize } from "../utils/fonts";
+
 import { addDeck } from "../actions";
 import { AppView } from "../components/appview";
 import { NavigationActions } from "react-navigation";
@@ -41,12 +43,13 @@ class AddDeck extends Component {
         })
       );
     });
+    Keyboard.dismiss();
     this.setState({ title: "" });
   };
 
   render() {
     return (
-      <AppView>
+      <AppView isFormView={true}>
         <Text style={styles.addQuestion}>
           What is the title of your new deck?
         </Text>
@@ -69,7 +72,7 @@ class AddDeck extends Component {
 
 const styles = StyleSheet.create({
   addQuestion: {
-    fontSize: 30,
+    fontSize: headFontSize,
     fontWeight: "bold",
     paddingTop: 50,
     paddingRight: 20,

@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { white } from "../utils/colors";
 import { TextButton } from "../components/textbutton";
+import { headFontSize, regularFontSize } from "../utils/fonts";
 
 function ResultView({
   correctAnswers,
@@ -43,12 +44,12 @@ const styles = StyleSheet.create({
   },
   resultText: {
     height: 150,
-    fontSize: 25,
+    fontSize: headFontSize,
     fontWeight: "bold"
   },
 
   correctAnswersText: {
-    fontSize: 20,
+    fontSize: regularFontSize,
     fontWeight: "bold",
     padding: 10
   }

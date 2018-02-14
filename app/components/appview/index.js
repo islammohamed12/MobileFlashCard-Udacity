@@ -1,8 +1,15 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView } from "react-native";
 import { white } from "../../utils/colors";
 
-export const AppView = ({ children, style = {} }) => {
+export const AppView = ({ children, style = {}, isFormView }) => {
+  if (isFormView)
+    return (
+      <KeyboardAvoidingView style={[styles.container, style]}>
+        {children}
+      </KeyboardAvoidingView>
+    );
+
   return <View style={[styles.container, style]}>{children}</View>;
 };
 

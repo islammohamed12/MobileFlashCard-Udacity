@@ -8,6 +8,7 @@ import {
   FlatList
 } from "react-native";
 import { white, gray } from "../utils/colors";
+import { headFontSize, regularFontSize } from "../utils/fonts";
 
 const onDeckItemClick = (deck, navigator) =>
   navigator.navigate("DeckDetails", {
@@ -52,12 +53,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   cardtitle: {
-    fontSize: 20,
+    fontSize: regularFontSize,
     paddingTop: 15,
     fontWeight: "bold"
   },
   cardtitleBig: {
-    fontSize: 30,
+    fontSize: headFontSize,
     paddingTop: 150,
     fontWeight: "bold"
   }
